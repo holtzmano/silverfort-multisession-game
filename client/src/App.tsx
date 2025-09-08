@@ -48,7 +48,9 @@ export default function App() {
         <header className="topbar">
           <h1>Multisession Game</h1>
           <div className="spacer" />
-          <div className="score" aria-live="polite">Score: {state.score}</div>
+          <div className="score" aria-live="polite" role="status" aria-atomic="true">
+            Score: {state.score}
+          </div>
           <button className="btn" onClick={() => setShowLB((s) => !s)}>
             {showLB ? 'Hide Leaderboard' : 'Leaderboard'}
           </button>

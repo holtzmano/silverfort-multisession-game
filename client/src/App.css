@@ -4,7 +4,7 @@
 
 .topbar { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
 .topbar .spacer { flex: 1; }
-.score { font-weight: 600; }
+.score { font-weight: 700; color: #111; }
 
 .banner {
   background: #ffe3e3;
