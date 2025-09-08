@@ -82,7 +82,7 @@ io.on('connection', (socket) => {
       return;
     }
     const raw = (payload?.name ?? '').trim();
-    const name = raw.length ? raw.slice(0, 24) : 'Anon';
+    const name = raw.length ? raw.slice(0, 24) : 'Oren';
 
     leaderboard.push({ name, score: gameState.score, when: Date.now() });
     leaderboard.sort((a, b) => b.score - a.score || a.when - b.when);
