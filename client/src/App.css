@@ -1,0 +1,194 @@
+:root { font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; }
+
+.wrap { max-width: 960px; margin: 2rem auto; padding: 0 1rem; }
+
+.topbar { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.topbar .spacer { flex: 1; }
+.score { font-weight: 600; }
+
+.banner {
+  background: #ffe3e3;
+  border: 1px solid #ffc9c9;
+  color: #c92a2a;
+  padding: .5rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Board grid: square-ish cells, responsive min size */
+.board {
+  display: grid;
+  gap: 12px;
+  grid-auto-rows: 1fr;
+}
+
+.cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .25rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  transition: background .15s ease, box-shadow .15s ease, transform .02s ease;
+  aspect-ratio: 1 / 1;
+  min-width: 70px;
+}
+.cell:hover { background: #f7f7f7; }
+.cell:active { transform: translateY(1px); }
+.cell:focus-visible {
+  outline: 3px solid #8ecae6;
+  outline-offset: 2px;
+}
+.cell.disabled { cursor: not-allowed; opacity: .7; }
+
+.badge {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: #222;
+  color: #fff;
+  border-radius: 999px;
+  padding: 2px 6px;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.board.gameover { pointer-events: none; opacity: .9; }
+
+/* Card container */
+.card {
+  background: #fff;
+  border: 1px solid #e9e9e9;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.06);
+}
+
+/* Footer status row */
+.footbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Optional nicer button look */
+.topbar button {
+  border: 1px solid #ddd;
+  background: #fafafa;
+  border-radius: 8px;
+  padding: .4rem .8rem;
+  cursor: pointer;
+}
+
+.topbar button:hover { background: #f0f0f0; }
+
+/* Save row */
+.save-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.save-row input {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: .45rem .6rem;
+}
+.save-row .primary {
+  border: 1px solid #1b74e4;
+  background: #1b74e4;
+  color: #fff;
+  border-radius: 8px;
+  padding: .45rem .8rem;
+  cursor: pointer;
+}
+.save-row .primary:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+/* (removed duplicate low-contrast leaderboard styles; see high-contrast block below) */
+
+/* Buttons */
+.btn {
+  border: 1px solid #d0d0d0;
+  background: #f7f7f7;
+  color: #111;
+  border-radius: 8px;
+  padding: .45rem .8rem;
+  cursor: pointer;
+}
+.btn:hover { background: #efefef; }
+
+/* Clear reason strip */
+.reason {
+  margin: 10px 0;
+  padding: 8px 10px;
+  border: 1px solid #fde2e2;
+  background: #fff5f5;
+  color: #8a1c1c;
+  border-radius: 8px;
+  font-size: 14px;
+}
+.reason .muted { color: #6b6b6b; }
+
+/* Loss highlighting */
+.cell.loser {
+  outline: 3px solid #e03131;           /* strong red outline for the clicked losing cell */
+  box-shadow: 0 0 0 3px rgba(224,49,49,0.15);
+  position: relative;
+}
+.cell.blocker {
+  outline: 2px dashed #e8590c;          /* dashed orange for orthogonal blockers */
+}
+
+.note {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  font-size: 12px;
+  background: rgba(224,49,49,.08);
+  color: #a12424;
+  border: 1px solid rgba(224,49,49,.35);
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+
+/* Leaderboard: HIGH CONTRAST */
+.leaderboard {
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  background: #ffffff;            /* white background */
+  color: #111;                    /* dark text */
+}
+.leaderboard h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.05rem;
+  color: #111;                    /* ensure visible title */
+  font-weight: 700;
+}
+.leaderboard ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.leaderboard li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #ececec;
+  color: #111;
+}
+.leaderboard li:last-child { border-bottom: none; }
+.lb-name  { font-weight: 700; color: #111; }  /* make the NAME pop */
+.lb-score { font-variant-numeric: tabular-nums; color: #111; }
+.lb-when  { color: #444; font-size: 12px; }
