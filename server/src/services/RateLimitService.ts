@@ -33,12 +33,6 @@ export class RateLimitService {
     return true;
   }
 
-  public recordRequest(clientId: string): void {
-    const now = Date.now();
-    const window = this.clientWindows.get(clientId) || [];
-    window.push(now);
-    this.clientWindows.set(clientId, window);
-  }
 
   public cleanup(): void {
     const now = Date.now();
